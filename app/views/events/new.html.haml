@@ -1,0 +1,10 @@
+%h1='イベント新規作成'
+
+=form_for(@event) do |f|
+  %div
+    %p='イベント名'
+    =f.text_field :name
+    %p='説明'
+    =f.text_area :description, row: 4
+
+  =f.submit 'イベント作成'
