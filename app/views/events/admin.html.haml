@@ -11,12 +11,12 @@
     %thead
       %tr
         %th='日程'
-        %th
+        -@event.members.each do |member|
+          %th=member.name
     %tbody
     -@event.schedules.each do |schedule|
       %tr
         %td=schedule.date_time
-        %td
-          %select
-            %option{value: 'false'}='✕'
-            %option{value: 'true'}='◯'
+        -@event.members.each do |member|
+          -member.member_schedules.each do |member_schedule|
+            member_schedule.enabled

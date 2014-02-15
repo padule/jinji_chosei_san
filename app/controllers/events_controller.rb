@@ -4,11 +4,23 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create params[:event]
-    redirect_to action: :show, access_token: @event.access_token
+    @event = Event.new params[:event]
+
+    params[:date_times].each_line do |date_time|
+      @event.schedules.build(date_time: date_time)
+    end
+
+    @event.save
+
+    redirect_to action: :admin, id: @event.id, access_token: @event.access_token
   end
 
   def show
     @event = Event.find_by_access_token params[:access_token]
   end
+
+  def admin
+    @event = Event.find_by_id_and_access_token params[:id], params[:access_token]
+  end
+
 end
