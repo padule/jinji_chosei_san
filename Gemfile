@@ -28,6 +28,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'powder'
   gem 'guard-pow'
 end

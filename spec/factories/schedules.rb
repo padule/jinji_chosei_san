@@ -1,6 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :schedule do
+    date_time '2014/02/15 10:00~'
+    association :event
   end
 end
