@@ -1,10 +1,12 @@
 %h1='イベント新規作成'
 
-=form_for(@event) do |f|
+=form_tag action: :create do
   %div
     %p='イベント名'
-    =f.text_field :name
+    =text_field_tag 'event[name]'
     %p='説明'
-    =f.text_area :description, row: 4
+    =text_area_tag 'event[description]'
+    %p='日程'
+    =text_area_tag 'date_times'
 
-  =f.submit 'イベント作成'
+  =submit_tag 'イベント作成'
