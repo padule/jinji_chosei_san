@@ -1,0 +1,35 @@
+.row
+  %h2='日程登録ページ'
+
+.row
+  %h4=@event.name
+  =@event.description
+
+.row
+  %h4='候補日程を入力する'
+  =form_for [@event, @member], :url => {controller: 'members', action: 'create', event_access_token: @event.access_token} do |f|
+
+    %h6='名前（必須）'
+    =f.text_field :name
+
+    %h6='コメント'
+    =f.text_field :comment
+    =f.hidden_field :event_id, value: @event.id
+
+    %h6='候補日程'
+    %table
+      %thead
+        %tr
+          %th='日程'
+          %th
+      %tbody
+      -@member.member_schedules.each do |member_schedule|
+        %tr
+          %td=member_schedule.schedule.date_time
+          %td
+            =f.fields_for 'member_schedules_attributes[]', member_schedule do |mf|
+              =mf.hidden_field :schedule_id, value: member_schedule.schedule.id
+              =mf.select :enabled, [['✕', false], ['◯', true]]
+
+    %p.sub-text.small-text='※ 送信前に入力項目をよく確認してください。'
+    =f.submit '日程を送信する', :class => 'btn-accent btn-large'

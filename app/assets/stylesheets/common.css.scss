@@ -1,0 +1,156 @@
+@import 'compass';
+@import 'font-awesome';
+
+//------------------------------
+// color
+//------------------------------
+$main-color: desaturate(#d35400, 10%);
+$accent-color: adjust-hue($main-color, 200);
+$base-color: #f6f6f6;
+$text-color: #2c3e50;
+$sub-text-color: lighten($text-color, 10%);
+$text-light-color: adjust-hue($text-color, 180);
+
+//------------------------------
+// size
+//------------------------------
+$font-size-large: 20px;
+$font-size-small: 12px;
+
+//------------------------------
+// margin
+//------------------------------
+$margin-large: 12px;
+$margin-inner: 8px;
+$margin-small: 6px;
+
+//------------------------------
+// font
+//------------------------------
+@mixin num-font{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+@mixin theme-font{
+  font-family: 'ヒラギノ角ゴ Pro W3',Tahoma;
+}
+
+//------------------------------
+// border
+//------------------------------
+@mixin line-top($black: .1, $white: .5){
+  border-top: 1px solid rgba(0, 0, 0, $black);
+  @include box-shadow(rgba(255, 255, 255, $white) 0 1px 0 inset);
+}
+
+@mixin line-left($black: .1, $white: .5){
+  border-left: 1px solid rgba(0, 0, 0, $black);
+  @include box-shadow(rgba(255, 255, 255, $white) -1px 0 0);
+}
+
+@mixin line-right($black: .1, $white: .5){
+  border-right: 1px solid rgba(0, 0, 0, $black);
+  @include box-shadow(rgba(255, 255, 255, $white) -1px 0 0 inset);
+}
+
+@mixin line-bottom($black: .1, $white: .5){
+  border-bottom: 1px solid rgba(0, 0, 0, $black);
+  @include box-shadow(rgba(255, 255, 255, $white) 0 1px 0);
+}
+
+//------------------------------
+// text
+//------------------------------
+@mixin ts-000($op: .2){
+  text-shadow: 1px -1px rgba(0, 0, 0, $op);
+}
+
+@mixin ts-fff($op: .5){
+  text-shadow: -1px 1px rgba(0, 0, 0, $op);
+}
+
+//------------------------------
+// gradation
+//------------------------------
+@mixin gradient-top-lighten($color: #666, $lighten: 5%){
+  background-color: $color;
+  @include filter-gradient(lighten($color, $lighten), $color, vertical);
+  @include background-image(linear-gradient(lighten($color, $lighten) 0%, $color 100%));
+}
+
+@mixin gradient-top-darken($color: #666, $darken: 5%){
+  background-color: $color;
+  @include filter-gradient(darken($color, $darken), $color, vertical);
+  @include background-image(linear-gradient(darken($color, $darken) 0%, $color 100%));
+}
+
+//------------------------------
+// box
+//------------------------------
+@mixin shadow-box($shadow: .15){
+  @include box-shadow(rgba(0, 0, 0, $shadow) 0 0 2px);
+}
+
+@mixin rich-box($shadow: .2){
+  @include box-shadow(rgba(0, 0, 0, $shadow) 0 0 0 20px inset);
+}
+
+@mixin deboss-box($border: .1, $shadow: .05, $highlight: .8){
+  border: 1px solid rgba(0, 0, 0, $border);
+  @include box-shadow(rgba(0, 0, 0, $shadow) -1px 1px 2px inset, rgba(255, 255, 255, $highlight) -1px 1px 0);
+}
+
+@mixin emboss-box($border: .1, $shadow: .05, $highlight: .5){
+  border: 1px solid rgba(0, 0, 0, $border);
+  @include box-shadow(rgba(0, 0, 0, $shadow) -1px 1px 0, rgba(255, 255, 255, $highlight) -1px 1px 0 inset);
+}
+
+//------------------------------
+// button
+//------------------------------
+@mixin button($color: #48b1f2, $font-size: 12px, $text-color: white){
+  display: inline-block;
+  background-origin: border-box;
+  position: relative;
+  font-weight: bold;
+  @include ts-000(.1);
+  @include gradient-top-lighten($color, 5%);
+  @include border-radius(4px);
+  @include emboss-box($border: .1, $shadow: .1, $highlight: .2);
+  color: rgba($text-color, .9);
+  text-align: center;
+  font-size: $font-size;
+  padding: 0 ($font-size * 2);
+  height: $font-size * 3;
+  line-height: $font-size * 3;
+  i{
+    font-size: 130%;
+    margin-right: 2px;
+    color: rgba($text-color, .5);
+  }
+  &:hover{
+    @include gradient-top-lighten(lighten($color, 5%), 5%);
+    text-decoration: none;
+    color: $text-color;
+    i{
+      color: $text-color;
+    }
+  }
+  &:active{
+    @include gradient-top-lighten($color, 5%);
+    top:1px;
+  }
+  &.disabled{
+    background-color: lighten($color, 5%);
+    @include opacity(.4);
+    &:hover, &:active{
+      background-color: lighten($color, 5%);
+      top: 0;
+      color: $text-color;
+      i{
+        color: rgba($text-color, .5);
+      }
+    }
+  }
+}
