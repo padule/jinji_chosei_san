@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140215153723) do
     t.string   "name",                    null: false
     t.string   "description"
     t.string   "access_token", limit: 10, null: false
+    t.string   "admin_token",  limit: 10, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,9 +31,10 @@ ActiveRecord::Schema.define(version: 20140215153723) do
   end
 
   create_table "members", force: true do |t|
-    t.integer  "event_id",   null: false
-    t.string   "name",       null: false
+    t.integer  "event_id",                null: false
+    t.string   "name",                    null: false
     t.string   "comment"
+    t.string   "access_token", limit: 10, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

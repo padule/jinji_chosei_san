@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
     @event.save
 
-    redirect_to action: :admin, id: @event.id, access_token: @event.access_token
+    redirect_to action: :admin, admin_token: @event.admin_token, access_token: @event.access_token
   end
 
   def show
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def admin
-    @event = Event.find_by_id_and_access_token params[:id], params[:access_token]
+    @event = Event.find_by_admin_token_and_access_token params[:admin_token], params[:access_token]
   end
 
 end
