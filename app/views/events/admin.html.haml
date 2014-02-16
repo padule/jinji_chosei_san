@@ -1,4 +1,4 @@
-%h1='イベントページ'
+%h1='イベント管理ページ'
 
 %div
   %p='イベント名'
@@ -7,6 +7,7 @@
   =@event.description
 
   %p='日程'
+
   %table
     %thead
       %tr
@@ -14,9 +15,8 @@
         -@event.members.each do |member|
           %th=member.name
     %tbody
-    -@event.schedules.each do |schedule|
-      %tr
-        %td=schedule.date_time
-        -@event.members.each do |member|
-          -member.member_schedules.each do |member_schedule|
-            member_schedule.enabled
+      -@event.schedules.each_with_index do |schedule, i|
+        %tr
+          %td=schedule.date_time
+          -@event.members.each do |member|
+            %td=member.member_schedules[i].enabled
