@@ -6,17 +6,26 @@
   %p='説明'
   =@event.description
 
-  %p='日程'
-  %table
-    %thead
-      %tr
-        %th='日程'
-        %th
-    %tbody
-    -@event.schedules.each do |schedule|
-      %tr
-        %td=schedule.date_time
-        %td
-          %select
-            %option{value: 'false'}='✕'
-            %option{value: 'true'}='◯'
+  =form_for [@event, @member], :url => {controller: 'members', action: 'create', event_access_token: @event.access_token} do |f|
+    %p='名前'
+    =f.text_field :name
+    %p='コメント'
+    =f.text_field :comment
+    =f.hidden_field :event_id, value: @event.id
+
+    %p='候補'
+    %table
+      %thead
+        %tr
+          %th='日程'
+          %th
+      %tbody
+      -@member.member_schedules.each do |member_schedule|
+        %tr
+          %td=member_schedule.schedule.date_time
+          %td
+            =f.fields_for 'member_schedules_attributes[]', member_schedule do |mf|
+              =mf.hidden_field :schedule_id, value: member_schedule.schedule.id
+              =mf.select :enabled, [['✕', false], ['◯', true]]
+
+    =f.submit 'イベント作成'
