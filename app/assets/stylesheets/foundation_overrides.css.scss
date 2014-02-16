@@ -1,0 +1,10 @@
+@import 'foundation';
+@import 'common';
+
+input, textarea{
+  @include border-radius(6px !important);
+}
+
+textarea{
+  margin-bottom: $margin-small;
+}
