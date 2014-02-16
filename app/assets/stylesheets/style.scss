@@ -1,0 +1,91 @@
+@import 'foundation_overrides';
+@import 'common';
+
+//------------------------------
+// background
+//------------------------------
+body{
+  background: image-url("bg/brillant.png") repeat !important;
+  color: $text-color !important;
+  font-family: 'ヒラギノ角ゴ Pro W3',Tahoma;
+}
+
+//------------------------------
+// text
+//------------------------------
+.sub-text{
+  color: $sub-text-color;
+}
+
+.small-text{
+  font-size: $font-size-small;
+}
+
+.num-text{
+  @include num-font;
+  font-size: 140%;
+}
+
+.logo{
+  @include theme-font;
+  @include ts-000;
+  font-size: 30px;
+}
+
+//------------------------------
+// util
+//------------------------------
+.ellipsis{ @include ellipsis }
+
+//------------------------------
+// button
+//------------------------------
+.btn-large{
+  @include button($font-size: 24px);
+}
+
+.btn-small{
+  @include button($font-size: 12px);
+}
+
+.btn-accent{
+  @include button($color: $accent-color);
+}
+
+.btn-black{
+  @include button($color: #444);
+}
+
+.btn-white{
+  @include button($color: #f6f6f6, $text-color: $text-color);
+  @include ts-fff(0);
+  @include ts-000(.1);
+  @include emboss-box(.05, .05, 1);
+}
+
+//------------------------------
+// container
+//------------------------------
+.logo-container{
+  padding: $margin-inner;
+  @include gradient-top-lighten($main-color);
+  .logo{
+    color: $base-color;
+    font-size: 24px;
+  }
+}
+
+.container{
+  padding: $margin-large;
+}
+
+.row{
+  margin-bottom: $margin-inner !important;
+}
+
+//------------------------------
+// header
+//------------------------------
+h4{
+  @include line-bottom;
+}

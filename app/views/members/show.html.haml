@@ -1,1 +1,17 @@
-送信しました。
+.row
+  %h2='日程を送信しました。'
+
+.row
+  %h4=@member.event.name
+  %p=@member.event.description
+
+  %table
+    %thead
+      %tr
+        %th='確定日程'
+        %th=@member.name
+    %tbody
+      -@member.event.schedules.each_with_index do |schedule, i|
+        %tr
+          %td=schedule.date_time
+          %td=@member.member_schedules[i].enabled
