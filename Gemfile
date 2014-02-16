@@ -35,6 +35,7 @@ end
 
 group :development do
   gem 'bullet'
+  gem 'proxylocal'
 end
 
 group :doc do
