@@ -74,3 +74,18 @@ body{
     font-size: 24px;
   }
 }
+
+.container{
+  padding: $margin-large;
+}
+
+.row{
+  margin-bottom: $margin-inner !important;
+}
+
+//------------------------------
+// header
+//------------------------------
+h4{
+  @include line-bottom;
+}

@@ -8,7 +8,8 @@
 
   %body
     =render 'layouts/header'
-    = yield
+    .container
+      = yield
 
     :coffeescript
       window.choseisan = { Models: {}, Collections: {}, Views: {}, Routers: {} }
