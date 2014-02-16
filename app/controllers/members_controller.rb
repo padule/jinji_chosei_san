@@ -10,4 +10,13 @@ class MembersController < ApplicationController
   def show
     @member = Member.find_by_access_token params[:access_token]
   end
+
+  def new
+    @event = Event.find_by_access_token params[:event_access_token]
+    @member = Member.new event_id: @event.id
+    @event.schedules.each do |schedule|
+      @member.member_schedules.build schedule_id: schedule.id
+    end
+  end
+
 end

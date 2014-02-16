@@ -15,14 +15,6 @@ class EventsController < ApplicationController
     redirect_to action: :admin, admin_token: @event.admin_token, access_token: @event.access_token
   end
 
-  def show
-    @event = Event.find_by_access_token params[:access_token]
-    @member = Member.new event_id: @event.id
-    @event.schedules.each do |schedule|
-      @member.member_schedules.build schedule_id: schedule.id
-    end
-  end
-
   def admin
     @event = Event.find_by_admin_token_and_access_token params[:admin_token], params[:access_token]
   end
