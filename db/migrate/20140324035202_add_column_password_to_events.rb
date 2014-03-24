@@ -1,4 +1,4 @@
-class AddEventsPassword < ActiveRecord::Migration
+class AddColumnPasswordToEvents < ActiveRecord::Migration
   def up
     add_column:events,:password,:string
     change_column:events,:password,:string,limit:32,null:false
