@@ -15,6 +15,12 @@ class EventsController < ApplicationController
     redirect_to action: :admin, admin_token: @event.admin_token, access_token: @event.access_token
   end
 
+  def forgote
+    if request.post?
+      redirect_to params[:event][:url]
+    end
+  end
+
   def admin
     @event = Event.find_by_admin_token_and_access_token params[:admin_token], params[:access_token]
   end
