@@ -47,6 +47,7 @@ GEM
       ejs
       jquery-rails
       railties
+    bcrypt-ruby (3.0.1)
     bert (1.1.6)
     builder (3.1.4)
     bullet (4.7.1)
@@ -243,6 +244,7 @@ PLATFORMS
 
 DEPENDENCIES
   backbone-on-rails
+  bcrypt-ruby
   bullet
   coffee-rails (~> 4.0.0)
   compass-rails

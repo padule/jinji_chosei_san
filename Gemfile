@@ -22,6 +22,8 @@ gem 'haml-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+gem 'bcrypt-ruby'
+
 group :development, :test do
   gem 'spork'
   gem 'guard-spork'
