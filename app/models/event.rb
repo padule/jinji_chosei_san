@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  has_secure_password validations: false
   has_many :schedules
   has_many :members
 
