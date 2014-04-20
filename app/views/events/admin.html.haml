@@ -1,0 +1,23 @@
+.row
+  %h2='イベント管理ページ'
+  %p.sub-text.small-text='このページは候補者には公開されません。'
+  %p.sub-text.small-text='以下のURLを候補者にメールし、各自の参加可能日程を入力してもらいましょう。'
+  =text_field_tag '', new_event_member_url(event_access_token: @event.access_token), onclick: 'this.select(0,this.value.length);'
+  =link_to '候補者用のページを表示', new_event_member_url(event_access_token: @event.access_token), target: '_blank'
+
+.row
+  %h4=@event.name
+  %p=@event.description
+
+  %table
+    %thead
+      %tr
+        %th='候補日程'
+        -@event.members.each do |member|
+          %th=member.name
+    %tbody
+      -@event.schedules.each_with_index do |schedule, i|
+        %tr
+          %td=schedule.date_time
+          -@event.members.each do |member|
+            %td=member.member_schedules[i].enabled

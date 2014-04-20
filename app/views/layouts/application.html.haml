@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title 人事調整さん
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    %meta{:name => "viewport", :content => "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no"}
+    = csrf_meta_tags
+
+  %body
+    =render 'layouts/header'
+    .container
+      = yield
+
+    :coffeescript
+      window.choseisan = { Models: {}, Collections: {}, Views: {}, Routers: {} }
+
+    = javascript_include_tag "application", "data-turbolinks-track" => true

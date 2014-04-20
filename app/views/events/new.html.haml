@@ -1,0 +1,26 @@
+.row
+  %h2='面接新規作成'
+
+=form_tag action: :create do
+  .row
+    %h4='面接名'
+    %p.sub-text.small-text='面接の名前を入力してください。'
+    =text_field_tag 'event[name]'
+
+  .row
+    %h4='詳細説明文'
+    %p.sub-text.small-text='開催場所や持ち物を入力してください。'
+    =text_area_tag 'event[description]', '', :rows => '6'
+
+  .row
+    %h4='候補日程'
+    %p.sub-text.small-text='自由書式で候補日程/日時を入力してください。候補の区切りは改行で判断されます。'
+    =text_area_tag 'date_times', '', :rows => '10'
+
+  .row
+    %h4='パスワード'
+    %p.sub-text.small-text='面接ページを表示するためのパスワードを入力してください'
+    =password_field_tag 'event[password]'
+
+  .row
+    =submit_tag 'イベントを作成する', :class => 'btn-accent btn_large'
