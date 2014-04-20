@@ -1,9 +1,9 @@
 class AddColumnPasswordToEvents < ActiveRecord::Migration
   def up
-    add_column:events,:password,:string
-    change_column:events,:password,:string,limit:32,null:false
+    add_column:events,:password_digest,:string
+    change_column:events,:password_digest,:string
   end
   def down
-    remove_column:events,:password
+    remove_column:events,:password_digest
   end
 end

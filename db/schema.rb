@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(version: 20140324035202) do
 
   create_table "events", force: true do |t|
-    t.string   "name",                    null: false
+    t.string   "name",                       null: false
     t.string   "description"
-    t.string   "access_token", limit: 10, null: false
-    t.string   "admin_token",  limit: 10, null: false
+    t.string   "access_token",    limit: 10, null: false
+    t.string   "admin_token",     limit: 10, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password",     limit: 32, null: false
+    t.string   "password_digest"
   end
 
   create_table "member_schedules", force: true do |t|
