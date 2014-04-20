@@ -1,7 +1,9 @@
 .row
   %h2='面接のURL忘れた方はこちら'
+  %p{:style => "color:red"}
+    #{flash[:alert]}
 
-=form_tag action: :forgote do
+=form_tag action: :validate do
   .row
     %h4='候補者用URL'
     %p.sub-text.small-text='候補者用ページのURLを入力してください'
